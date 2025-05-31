@@ -1,7 +1,7 @@
 import http from 'http';
 import express from 'express';
 
-import { server } from './config/config';
+import { SERVER_CONFIG } from './config/config';
 import { usersController } from './controllers/users';
 import mongoose from 'mongoose';
 
@@ -24,8 +24,8 @@ export const Main = () => {
     });
 
     httpServer = http.createServer(application);
-    httpServer.listen(server.SERVER_PORT, () => {
-        console.log(`Server started on ${server.SERVER_HOSTNAME}:${server.SERVER_PORT}`);
+    httpServer.listen(SERVER_CONFIG.SERVER_PORT, () => {
+        console.log(`Server started on ${SERVER_CONFIG.SERVER_HOSTNAME}:${SERVER_CONFIG.SERVER_PORT}`);
     });
 
     if (process.env.MONGO_URL) {
